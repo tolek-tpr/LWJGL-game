@@ -1,4 +1,4 @@
-package org.example;
+package org.bnb;
 
 public class Main {
 
