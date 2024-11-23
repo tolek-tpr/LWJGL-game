@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class Main {
 
-    private static Window w;
-
     public static void main(String[] args) {
         System.out.println("Hello, World!");
 
@@ -20,10 +18,8 @@ public class Main {
 
         events.forEach(EventImpl::onEnable);
 
-        w = new Window();
-        w.run();
+        // Client start
+        LWGClient client = LWGClient.getInstance();
     }
-
-    public static Window getWindow() { return w; }
 
 }

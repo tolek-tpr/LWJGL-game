@@ -1,5 +1,6 @@
 package org.bnb.events;
 
+import org.bnb.LWGClient;
 import org.bnb.Main;
 import org.bnb.event.EventImpl;
 import org.bnb.event.EventManager;
@@ -21,7 +22,7 @@ public class Keyboard extends EventImpl implements KeyboardListener {
 
     @Override
     public void onKey(int keyCode, int scanCode, int mods) {
-        Window window = Main.getWindow();
+        Window window = LWGClient.getInstance().getWindow();
         boolean pressed = GLFW.glfwGetKey(window.getHandle(), keyCode) == GLFW.GLFW_PRESS;
 
         if (pressed && keyCode == GLFW.GLFW_KEY_ESCAPE) {
