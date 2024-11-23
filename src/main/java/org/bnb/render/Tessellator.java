@@ -5,7 +5,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.nio.FloatBuffer;
 
-public class Tesselator {
+public class Tessellator {
 
     private int vertexCount = 0;
 

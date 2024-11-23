@@ -21,7 +21,7 @@
 Command Line: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=52520:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 org.bnb.Main
 
 Host: 12th Gen Intel(R) Core(TM) i5-12450H, 12 cores, 15G,  Windows 11 , 64 bit Build 22621 (10.0.22621.4391)
-Time: Sun Nov 24 00:33:32 2024 Mitteleuropäische Zeit elapsed time: 22.031188 seconds (0d 0h 0m 22s)
+Time: Sun Nov 24 00:33:32 2024 Mitteleuropï¿½ische Zeit elapsed time: 22.031188 seconds (0d 0h 0m 22s)
 
 ---------------  T H R E A D  ---------------
 
@@ -39,7 +39,7 @@ C  0x0000016007b0280c  (no source info available)
 The last pc belongs to native nmethod (printed below).
 Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
 J 873  org.lwjgl.opengl.GL11C.glDrawArrays(III)V (0 bytes) @ 0x0000016007b02771 [0x0000016007b02720+0x0000000000000051]
-J 909 c1 org.bnb.render.Tesselator.flush()V (64 bytes) @ 0x00000160000fb814 [0x00000160000fb300+0x0000000000000514]
+J 909 c1 org.bnb.render.Tessellator.flush()V (64 bytes) @ 0x00000160000fb814 [0x00000160000fb300+0x0000000000000514]
 J 893 c1 org.bnb.window.Window.render()V (57 bytes) @ 0x00000160000f4714 [0x00000160000f4080+0x0000000000000694]
 j  org.bnb.window.Window.loop()V+81
 j  org.bnb.window.Window.run()V+13
@@ -232,7 +232,7 @@ Compiled method (n/a) 22102  873     n 0       org.lwjgl.opengl.GL11C::glDrawArr
 [/MachCode]
 
 
-Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (64 bytes)
+Compiled method (c1) 22105  909       3       org.bnb.render.Tessellator::flush (64 bytes)
  total in heap  [0x00000160000fb108,0x00000160000fbdb0] = 3240
  relocation     [0x00000160000fb1e0,0x00000160000fb2f8] = 280
  main code      [0x00000160000fb300,0x00000160000fbc88] = 2440
@@ -298,7 +298,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
   0x00000160000fb500: ; ImmutableOopMap {[216]=Oop }
                       ;*invokevirtual put {reexecute=0 rethrow=0 return_oop=0}
                       ; - java.nio.FloatBuffer::put@5 (line 1248)
-                      ; - org.bnb.render.Tesselator::flush@16 (line 18)
+                      ; - org.bnb.render.Tessellator::flush@16 (line 18)
   0x00000160000fb500: 3c0e 0000 
 
   0x00000160000fb504: ;   {other}
@@ -326,7 +326,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
 
   0x00000160000fb5c8: ; ImmutableOopMap {[216]=Oop }
                       ;*invokestatic glEnableClientState {reexecute=0 rethrow=0 return_oop=0}
-                      ; - org.bnb.render.Tesselator::flush@30 (line 21)
+                      ; - org.bnb.render.Tessellator::flush@30 (line 21)
   0x00000160000fb5c8: 646a a007 
 
   0x00000160000fb5cc: ;   {other}
@@ -385,7 +385,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
                       ;*invokestatic address {reexecute=0 rethrow=0 return_oop=0}
                       ; - org.lwjgl.system.MemoryUtil::memAddress@9 (line 788)
                       ; - org.lwjgl.opengl.GL11::glInterleavedArrays@3 (line 3866)
-                      ; - org.bnb.render.Tesselator::flush@41 (line 23)
+                      ; - org.bnb.render.Tessellator::flush@41 (line 23)
   0x00000160000fb768: 3456 ffff 
 
   0x00000160000fb76c: ;   {other}
@@ -399,7 +399,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
   0x00000160000fb798: ; ImmutableOopMap {[216]=Oop }
                       ;*invokestatic nglInterleavedArrays {reexecute=0 rethrow=0 return_oop=0}
                       ; - org.lwjgl.opengl.GL11::glInterleavedArrays@6 (line 3866)
-                      ; - org.bnb.render.Tesselator::flush@41 (line 23)
+                      ; - org.bnb.render.Tessellator::flush@41 (line 23)
   0x00000160000fb798: 146c a007 
 
   0x00000160000fb79c: ;   {other}
@@ -422,7 +422,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
   0x00000160000fb810: ; ImmutableOopMap {[216]=Oop }
                       ;*invokestatic glDrawArrays {reexecute=0 rethrow=0 return_oop=0}
                       ; - org.lwjgl.opengl.GL11::glDrawArrays@3 (line 1826)
-                      ; - org.bnb.render.Tesselator::flush@51 (line 25)
+                      ; - org.bnb.render.Tessellator::flush@51 (line 25)
   0x00000160000fb810: 1c6f a007 
 
   0x00000160000fb814: ;   {other}
@@ -436,7 +436,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
 
   0x00000160000fb838: ; ImmutableOopMap {[216]=Oop }
                       ;*invokestatic glDisableClientState {reexecute=0 rethrow=0 return_oop=0}
-                      ; - org.bnb.render.Tesselator::flush@56 (line 27)
+                      ; - org.bnb.render.Tessellator::flush@56 (line 27)
   0x00000160000fb838: 7472 a007 
 
   0x00000160000fb83c: ;   {other}
@@ -482,7 +482,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
 
   0x00000160000fba14: ; ImmutableOopMap {rdx=Oop [216]=Oop }
                       ;*synchronization entry
-                      ; - org.bnb.render.Tesselator::flush@-1 (line 17)
+                      ; - org.bnb.render.Tessellator::flush@-1 (line 17)
   0x00000160000fba14: 5407 e958 
 
   0x00000160000fba18: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
@@ -490,7 +490,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
 
   0x00000160000fba1c: ; ImmutableOopMap {rdx=Oop rsi=Oop [216]=Oop }
                       ;*invokevirtual clear {reexecute=0 rethrow=0 return_oop=0}
-                      ; - org.bnb.render.Tesselator::flush@4 (line 17)
+                      ; - org.bnb.render.Tessellator::flush@4 (line 17)
   0x00000160000fba1c: c055 5407 
 
   0x00000160000fba20: ;   {metadata({method} {0x00000160500cc760} 'clear' '()Ljava/nio/FloatBuffer;' in 'java/nio/FloatBuffer')}
@@ -502,7 +502,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
   0x00000160000fba38: ; ImmutableOopMap {rdx=Oop rsi=Oop [216]=Oop }
                       ;*synchronization entry
                       ; - java.nio.FloatBuffer::clear@-1 (line 1613)
-                      ; - org.bnb.render.Tesselator::flush@4 (line 17)
+                      ; - org.bnb.render.Tessellator::flush@4 (line 17)
   0x00000160000fba38: a4b8 5407 | e97d f9ff 
 
   0x00000160000fba40: ;   {metadata({method} {0x000001600f1a3410} 'clear' '()Ljava/nio/Buffer;' in 'java/nio/Buffer')}
@@ -515,7 +515,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
                       ;*synchronization entry
                       ; - java.nio.Buffer::clear@-1 (line 457)
                       ; - java.nio.FloatBuffer::clear@1 (line 1613)
-                      ; - org.bnb.render.Tesselator::flush@4 (line 17)
+                      ; - org.bnb.render.Tessellator::flush@4 (line 17)
   0x00000160000fba5c: 07e9 9df9 
 
   0x00000160000fba60: ;   {metadata({method} {0x00000160500cbd60} 'put' '([F)Ljava/nio/FloatBuffer;' in 'java/nio/FloatBuffer')}
@@ -527,7 +527,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
   0x00000160000fba7c: ; ImmutableOopMap {rdx=Oop rsi=Oop r8=Oop [216]=Oop }
                       ;*synchronization entry
                       ; - java.nio.FloatBuffer::put@-1 (line 1248)
-                      ; - org.bnb.render.Tesselator::flush@16 (line 18)
+                      ; - org.bnb.render.Tessellator::flush@16 (line 18)
   0x00000160000fba7c: 5407 e9d8 
 
   0x00000160000fba80: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
@@ -536,7 +536,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
   0x00000160000fba84: ; ImmutableOopMap {rdx=Oop rsi=Oop r8=Oop [216]=Oop }
                       ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
                       ; - java.nio.FloatBuffer::put@4 (line 1248)
-                      ; - org.bnb.render.Tesselator::flush@16 (line 18)
+                      ; - org.bnb.render.Tessellator::flush@16 (line 18)
   0x00000160000fba84: 5855 5407 
 
   0x00000160000fba88: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
@@ -544,7 +544,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
 
   0x00000160000fba8c: ; ImmutableOopMap {rdx=Oop rsi=Oop [216]=Oop }
                       ;*invokevirtual flip {reexecute=0 rethrow=0 return_oop=0}
-                      ; - org.bnb.render.Tesselator::flush@24 (line 19)
+                      ; - org.bnb.render.Tessellator::flush@24 (line 19)
                       ;   {metadata({method} {0x00000160500cc810} 'flip' '()Ljava/nio/FloatBuffer;' in 'java/nio/FloatBuffer')}
   0x00000160000fba8c: 0749 ba08 | c80c 5060 | 0100 004c | 8954 2408 | 48c7 0424 | ffff ffff 
 
@@ -554,7 +554,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
   0x00000160000fbaa8: ; ImmutableOopMap {rdx=Oop rsi=Oop [216]=Oop }
                       ;*synchronization entry
                       ; - java.nio.FloatBuffer::flip@-1 (line 1627)
-                      ; - org.bnb.render.Tesselator::flush@24 (line 19)
+                      ; - org.bnb.render.Tessellator::flush@24 (line 19)
   0x00000160000fbaa8: 07e9 acfa 
 
   0x00000160000fbaac: ;   {metadata({method} {0x000001600f1a36d0} 'flip' '()Ljava/nio/Buffer;' in 'java/nio/Buffer')}
@@ -567,7 +567,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
                       ;*synchronization entry
                       ; - java.nio.Buffer::flip@-1 (line 486)
                       ; - java.nio.FloatBuffer::flip@1 (line 1627)
-                      ; - org.bnb.render.Tesselator::flush@24 (line 19)
+                      ; - org.bnb.render.Tessellator::flush@24 (line 19)
   0x00000160000fbac8: 5407 e9c7 
 
   0x00000160000fbacc: ;   {metadata({method} {0x00000160505ac200} 'glInterleavedArrays' '(IILjava/nio/FloatBuffer;)V' in 'org/lwjgl/opengl/GL11')}
@@ -579,7 +579,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
   0x00000160000fbae8: ; ImmutableOopMap {rdx=Oop r8=Oop [216]=Oop }
                       ;*synchronization entry
                       ; - org.lwjgl.opengl.GL11::glInterleavedArrays@-1 (line 3866)
-                      ; - org.bnb.render.Tesselator::flush@41 (line 23)
+                      ; - org.bnb.render.Tessellator::flush@41 (line 23)
   0x00000160000fbae8: b754 07e9 | 2ffb ffff 
 
   0x00000160000fbaf0: ;   {metadata({method} {0x000001605042d5c8} 'memAddress' '(Ljava/nio/FloatBuffer;)J' in 'org/lwjgl/system/MemoryUtil')}
@@ -592,7 +592,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
                       ;*synchronization entry
                       ; - org.lwjgl.system.MemoryUtil::memAddress@-1 (line 788)
                       ; - org.lwjgl.opengl.GL11::glInterleavedArrays@3 (line 3866)
-                      ; - org.bnb.render.Tesselator::flush@41 (line 23)
+                      ; - org.bnb.render.Tessellator::flush@41 (line 23)
   0x00000160000fbb08: d4b7 5407 | e949 fbff 
 
   0x00000160000fbb10: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
@@ -602,7 +602,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
                       ;*invokevirtual position {reexecute=0 rethrow=0 return_oop=0}
                       ; - org.lwjgl.system.MemoryUtil::memAddress@1 (line 788)
                       ; - org.lwjgl.opengl.GL11::glInterleavedArrays@3 (line 3866)
-                      ; - org.bnb.render.Tesselator::flush@41 (line 23)
+                      ; - org.bnb.render.Tessellator::flush@41 (line 23)
                       ;   {metadata({method} {0x000001605042ce90} 'memAddress0' '(Ljava/nio/Buffer;)J' in 'org/lwjgl/system/MemoryUtil')}
   0x00000160000fbb14: 5407 49ba | 88ce 4250 | 6001 0000 | 4c89 5424 | 0848 c704 | 24ff ffff 
 
@@ -614,7 +614,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
                       ; - org.lwjgl.system.MemoryUtil::memAddress0@-1 (line 730)
                       ; - org.lwjgl.system.MemoryUtil::memAddress@6 (line 788)
                       ; - org.lwjgl.opengl.GL11::glInterleavedArrays@3 (line 3866)
-                      ; - org.bnb.render.Tesselator::flush@41 (line 23)
+                      ; - org.bnb.render.Tessellator::flush@41 (line 23)
   0x00000160000fbb30: 5407 e978 
 
   0x00000160000fbb34: ;   {metadata({method} {0x00000160501a6018} 'getLong' '(Ljava/lang/Object;J)J' in 'sun/misc/Unsafe')}
@@ -629,7 +629,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
                       ; - org.lwjgl.system.MemoryUtil::memAddress0@7 (line 730)
                       ; - org.lwjgl.system.MemoryUtil::memAddress@6 (line 788)
                       ; - org.lwjgl.opengl.GL11::glInterleavedArrays@3 (line 3866)
-                      ; - org.bnb.render.Tesselator::flush@41 (line 23)
+                      ; - org.bnb.render.Tessellator::flush@41 (line 23)
   0x00000160000fbb50: b754 07e9 | 9afb ffff 
 
   0x00000160000fbb58: ;   {metadata({method} {0x00000160501aa908} 'beforeMemoryAccess' '()V' in 'sun/misc/Unsafe')}
@@ -645,7 +645,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
                       ; - org.lwjgl.system.MemoryUtil::memAddress0@7 (line 730)
                       ; - org.lwjgl.system.MemoryUtil::memAddress@6 (line 788)
                       ; - org.lwjgl.opengl.GL11::glInterleavedArrays@3 (line 3866)
-                      ; - org.bnb.render.Tesselator::flush@41 (line 23)
+                      ; - org.bnb.render.Tessellator::flush@41 (line 23)
   0x00000160000fbb70: 6cb7 5407 | e9b2 fbff 
 
   0x00000160000fbb78: ;   {metadata({method} {0x00000160505a2978} 'glDrawArrays' '(III)V' in 'org/lwjgl/opengl/GL11')}
@@ -657,7 +657,7 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
   0x00000160000fbb94: ; ImmutableOopMap {rdx=Oop [216]=Oop }
                       ;*synchronization entry
                       ; - org.lwjgl.opengl.GL11::glDrawArrays@-1 (line 1826)
-                      ; - org.bnb.render.Tesselator::flush@51 (line 25)
+                      ; - org.bnb.render.Tessellator::flush@51 (line 25)
   0x00000160000fbb94: 07e9 51fc 
 
   0x00000160000fbb98: ;   {metadata({method} {0x00000160505dd4f0} 'clear' '()V' in 'org/bnb/render/Tesselator')}
@@ -668,8 +668,8 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
 
   0x00000160000fbbb4: ; ImmutableOopMap {[216]=Oop }
                       ;*synchronization entry
-                      ; - org.bnb.render.Tesselator::clear@-1 (line 32)
-                      ; - org.bnb.render.Tesselator::flush@60 (line 28)
+                      ; - org.bnb.render.Tessellator::clear@-1 (line 32)
+                      ; - org.bnb.render.Tessellator::flush@60 (line 28)
   0x00000160000fbbb4: 5407 e9ca 
 
   0x00000160000fbbb8: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
@@ -677,8 +677,8 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
 
   0x00000160000fbbbc: ; ImmutableOopMap {r8=Oop rbx=Oop [216]=Oop }
                       ;*invokevirtual clear {reexecute=0 rethrow=0 return_oop=0}
-                      ; - org.bnb.render.Tesselator::clear@4 (line 32)
-                      ; - org.bnb.render.Tesselator::flush@60 (line 28)
+                      ; - org.bnb.render.Tessellator::clear@4 (line 32)
+                      ; - org.bnb.render.Tessellator::flush@60 (line 28)
   0x00000160000fbbbc: 2054 5407 
 
   0x00000160000fbbc0: ;   {metadata({method} {0x00000160500cc760} 'clear' '()Ljava/nio/FloatBuffer;' in 'java/nio/FloatBuffer')}
@@ -690,8 +690,8 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
   0x00000160000fbbd8: ; ImmutableOopMap {r8=Oop rbx=Oop [216]=Oop }
                       ;*synchronization entry
                       ; - java.nio.FloatBuffer::clear@-1 (line 1613)
-                      ; - org.bnb.render.Tesselator::clear@4 (line 32)
-                      ; - org.bnb.render.Tesselator::flush@60 (line 28)
+                      ; - org.bnb.render.Tessellator::clear@4 (line 32)
+                      ; - org.bnb.render.Tessellator::flush@60 (line 28)
   0x00000160000fbbd8: 04b7 5407 | e9f3 fcff 
 
   0x00000160000fbbe0: ;   {metadata({method} {0x000001600f1a3410} 'clear' '()Ljava/nio/Buffer;' in 'java/nio/Buffer')}
@@ -704,8 +704,8 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
                       ;*synchronization entry
                       ; - java.nio.Buffer::clear@-1 (line 457)
                       ; - java.nio.FloatBuffer::clear@1 (line 1613)
-                      ; - org.bnb.render.Tesselator::clear@4 (line 32)
-                      ; - org.bnb.render.Tesselator::flush@60 (line 28)
+                      ; - org.bnb.render.Tessellator::clear@4 (line 32)
+                      ; - org.bnb.render.Tessellator::flush@60 (line 28)
   0x00000160000fbbfc: 07e9 0efd 
 
   0x00000160000fbc00: ;   {runtime_call new_type_array Runtime1 stub}
@@ -713,8 +713,8 @@ Compiled method (c1) 22105  909       3       org.bnb.render.Tesselator::flush (
 
   0x00000160000fbc04: ; ImmutableOopMap {r8=Oop [216]=Oop }
                       ;*newarray {reexecute=0 rethrow=0 return_oop=0}
-                      ; - org.bnb.render.Tesselator::clear@11 (line 33)
-                      ; - org.bnb.render.Tesselator::flush@60 (line 28)
+                      ; - org.bnb.render.Tessellator::clear@11 (line 33)
+                      ; - org.bnb.render.Tessellator::flush@60 (line 28)
   0x00000160000fbc04: 7054 07e9 | a4fd ffff | 418b 7010 | 48c1 e603 | 4883 fe00 | 0f84 9ffd | ffff 4889 
 
   0x00000160000fbc20: ;   {runtime_call g1_pre_barrier_slow}
@@ -896,7 +896,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
   0x00000160000f4338: ; ImmutableOopMap {[144]=Oop [152]=Oop }
                       ;*invokestatic getAllocationSize {reexecute=0 rethrow=0 return_oop=0}
                       ; - org.lwjgl.BufferUtils::createFloatBuffer@2 (line 146)
-                      ; - org.bnb.render.Tesselator::<init>@20 (line 14)
+                      ; - org.bnb.render.Tessellator::<init>@20 (line 14)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f4338: 04f1 ffff 
 
@@ -932,7 +932,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
                       ; - java.nio.ByteBuffer::allocateDirect@5 (line 363)
                       ; - org.lwjgl.BufferUtils::createByteBuffer@1 (line 75)
                       ; - org.lwjgl.BufferUtils::createFloatBuffer@5 (line 146)
-                      ; - org.bnb.render.Tesselator::<init>@20 (line 14)
+                      ; - org.bnb.render.Tessellator::<init>@20 (line 14)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f4438: 6458 0000 
 
@@ -959,7 +959,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
                       ;*invokevirtual order {reexecute=0 rethrow=0 return_oop=0}
                       ; - org.lwjgl.BufferUtils::createByteBuffer@7 (line 75)
                       ; - org.lwjgl.BufferUtils::createFloatBuffer@5 (line 146)
-                      ; - org.bnb.render.Tesselator::<init>@20 (line 14)
+                      ; - org.bnb.render.Tessellator::<init>@20 (line 14)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f44b0: 8cd7 feff 
 
@@ -982,7 +982,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
   0x00000160000f4560: ; ImmutableOopMap {[144]=Oop [152]=Oop }
                       ;*invokevirtual asFloatBuffer {reexecute=0 rethrow=0 return_oop=0}
                       ; - org.lwjgl.BufferUtils::createFloatBuffer@8 (line 146)
-                      ; - org.bnb.render.Tesselator::<init>@20 (line 14)
+                      ; - org.bnb.render.Tessellator::<init>@20 (line 14)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f4560: 8ee9 ffff 
 
@@ -1164,7 +1164,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
 
   0x00000160000f4834: ; ImmutableOopMap {rax=Oop [144]=Oop [152]=Oop }
                       ;*synchronization entry
-                      ; - org.bnb.render.Tesselator::<init>@-1 (line 8)
+                      ; - org.bnb.render.Tessellator::<init>@-1 (line 8)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f4834: 07e9 a6f9 
 
@@ -1177,7 +1177,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
   0x00000160000f4854: ; ImmutableOopMap {rax=Oop [144]=Oop [152]=Oop }
                       ;*synchronization entry
                       ; - java.lang.Object::<init>@-1 (line 45)
-                      ; - org.bnb.render.Tesselator::<init>@1 (line 8)
+                      ; - org.bnb.render.Tessellator::<init>@1 (line 8)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f4854: 5507 e9c1 
 
@@ -1186,7 +1186,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
 
   0x00000160000f485c: ; ImmutableOopMap {r9=Oop [144]=Oop [152]=Oop }
                       ;*newarray {reexecute=0 rethrow=0 return_oop=0}
-                      ; - org.bnb.render.Tesselator::<init>@12 (line 12)
+                      ; - org.bnb.render.Tessellator::<init>@12 (line 12)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f485c: 00e4 5407 | e946 faff | ff41 8b51 | 1048 c1e2 | 0348 83fa | 000f 8441 | faff ff48 
 
@@ -1205,7 +1205,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
   0x00000160000f48b8: ; ImmutableOopMap {r9=Oop [144]=Oop [152]=Oop }
                       ;*synchronization entry
                       ; - org.lwjgl.BufferUtils::createFloatBuffer@-1 (line 146)
-                      ; - org.bnb.render.Tesselator::<init>@20 (line 14)
+                      ; - org.bnb.render.Tessellator::<init>@20 (line 14)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f48b8: 07e9 57fa 
 
@@ -1219,7 +1219,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
                       ;*synchronization entry
                       ; - org.lwjgl.BufferUtils::createByteBuffer@-1 (line 75)
                       ; - org.lwjgl.BufferUtils::createFloatBuffer@5 (line 146)
-                      ; - org.bnb.render.Tesselator::<init>@20 (line 14)
+                      ; - org.bnb.render.Tessellator::<init>@20 (line 14)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f48d8: 5507 e9a1 
 
@@ -1234,7 +1234,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
                       ; - java.nio.ByteBuffer::allocateDirect@-1 (line 363)
                       ; - org.lwjgl.BufferUtils::createByteBuffer@1 (line 75)
                       ; - org.lwjgl.BufferUtils::createFloatBuffer@5 (line 146)
-                      ; - org.bnb.render.Tesselator::<init>@20 (line 14)
+                      ; - org.bnb.render.Tessellator::<init>@20 (line 14)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f48f8: 2955 07e9 | b9fa ffff 
 
@@ -1246,7 +1246,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
                       ; - java.nio.ByteBuffer::allocateDirect@0 (line 363)
                       ; - org.lwjgl.BufferUtils::createByteBuffer@1 (line 75)
                       ; - org.lwjgl.BufferUtils::createFloatBuffer@5 (line 146)
-                      ; - org.bnb.render.Tesselator::<init>@20 (line 14)
+                      ; - org.bnb.render.Tessellator::<init>@20 (line 14)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f4904: d8d8 5407 | e907 fbff 
 
@@ -1261,7 +1261,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
                       ; - java.nio.ByteOrder::nativeOrder@-1 (line 79)
                       ; - org.lwjgl.BufferUtils::createByteBuffer@4 (line 75)
                       ; - org.lwjgl.BufferUtils::createFloatBuffer@5 (line 146)
-                      ; - org.bnb.render.Tesselator::<init>@20 (line 14)
+                      ; - org.bnb.render.Tessellator::<init>@20 (line 14)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f4928: 07e9 51fb 
 
@@ -1271,7 +1271,7 @@ Compiled method (c1) 22118  893       3       org.bnb.window.Window::render (57 
   0x00000160000f4930: ; ImmutableOopMap {rax=Oop [144]=Oop [152]=Oop }
                       ;*invokevirtual asFloatBuffer {reexecute=0 rethrow=0 return_oop=0}
                       ; - org.lwjgl.BufferUtils::createFloatBuffer@8 (line 146)
-                      ; - org.bnb.render.Tesselator::<init>@20 (line 14)
+                      ; - org.bnb.render.Tessellator::<init>@20 (line 14)
                       ; - org.bnb.window.Window::render@10 (line 116)
   0x00000160000f4930: c654 078b | 5614 48c1 | e203 4883 | fa00 0f84 | 3dfc ffff | 4889 1424 
 
