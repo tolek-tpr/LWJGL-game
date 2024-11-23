@@ -115,9 +115,9 @@ public class Window {
 
         Tessellator t = new Tessellator();
         t.setVertex(0, 0, 0);
-        t.setVertex(1, 0, 0);
-        t.setVertex(1, 1, 0);
-        t.setVertex(0, 1, 0);
+        t.setVertex(0.5f, 0, 0);
+        t.setVertex(0.5f, 0.5f, 0);
+        t.setVertex(0, 0.5f, 0);
         t.flush();
 
         GLFW.glfwSwapBuffers(window);
