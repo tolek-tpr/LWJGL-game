@@ -2,7 +2,7 @@ package org.bnb.window;
 
 import org.bnb.event.EventManager;
 import org.bnb.event.KeyboardListener;
-import org.bnb.render.Tesselator;
+import org.bnb.render.Tessellator;
 import org.lwjgl.glfw.Callbacks;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -113,11 +113,11 @@ public class Window {
     private void render(){
         GL20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT); // clear the framebuffer
 
-        Tesselator t = new Tesselator();
+        Tessellator t = new Tessellator();
         t.setVertex(0, 0, 0);
-        t.setVertex(1, 0, 0);
-        t.setVertex(1, 1, 0);
-        t.setVertex(0, 1, 0);
+        t.setVertex(0.5f, 0, 0);
+        t.setVertex(0.5f, 0.5f, 0);
+        t.setVertex(0, 0.5f, 0);
         t.flush();
 
         GLFW.glfwSwapBuffers(window);

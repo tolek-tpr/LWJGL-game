@@ -5,13 +5,13 @@ import org.lwjgl.opengl.GL11;
 
 import java.nio.FloatBuffer;
 
-public class Tesselator {
+public class Tessellator {
 
     private int vertexCount = 0;
 
-    private float[] vertices = new float[12];
+    private float[] vertices = new float[100000];
 
-    private FloatBuffer vertexBuffer = BufferUtils.createFloatBuffer(12);
+    private FloatBuffer vertexBuffer = BufferUtils.createFloatBuffer(100000);
 
     public void flush(){
         vertexBuffer.clear();

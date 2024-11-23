@@ -2,7 +2,6 @@ package org.bnb;
 
 import org.bnb.event.EventImpl;
 import org.bnb.events.Keyboard;
-import org.bnb.window.Window;
 
 import java.util.ArrayList;
 
