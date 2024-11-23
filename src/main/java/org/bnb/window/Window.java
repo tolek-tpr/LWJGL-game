@@ -74,6 +74,7 @@ public class Window {
         GL.createCapabilities();
         GL20.glClearColor(0.1f, 0.5f, 0.5f, 1.0f);
 
+        //Game Loop
         while (!GLFW.glfwWindowShouldClose(window)) {
             double loopStartTime = System.currentTimeMillis();
             double elapsed = loopStartTime-prev;
