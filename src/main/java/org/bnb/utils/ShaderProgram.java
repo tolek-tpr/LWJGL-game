@@ -5,15 +5,16 @@ import org.lwjgl.opengl.GL20;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class ShaderProgram {
 
     public int ID;
 
-    public ShaderProgram(File vertexFile, File fragmentFile) {
+    public ShaderProgram(InputStream vertexFile, InputStream fragmentFile) {
         try {
-            String vCode = LWGUtil.readFile(LWGUtil.asInputStream(vertexFile));
-            String fCode = LWGUtil.readFile(LWGUtil.asInputStream(fragmentFile));
+            String vCode = LWGUtil.readFile(vertexFile);
+            String fCode = LWGUtil.readFile(fragmentFile);
 
             int vertex, fragment;
 

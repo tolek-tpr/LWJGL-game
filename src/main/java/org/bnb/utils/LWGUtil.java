@@ -4,6 +4,13 @@ import java.io.*;
 
 public class LWGUtil {
 
+    public static InputStream getResourceAsInputStream(String filePath) {
+        ClassLoader classLoader = LWGUtil.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(filePath);
+
+        return inputStream;
+    }
+
     /**
      *
      * @param in InputStream of the file you want to read
