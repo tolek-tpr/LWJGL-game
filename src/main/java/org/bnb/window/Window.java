@@ -117,11 +117,11 @@ public class Window {
         t.setColor(0, 1,0);
         t.setVertex(0, 0, 0);
         t.setColor(1, 0,0);
-        t.setVertex(0.5f, 0, 0);
-        t.setColor(1, 0,0);
+        t.setVertex(0.25f, 0, 0);
+        t.setColor(1, 1,0);
         t.setVertex(0.5f, 0.5f, 0);
-        t.setColor(1, 0,0);
-        t.setVertex(0, 0.5f, 0);
+        t.setColor(1, 0,1);
+        t.setVertex(0, 0.25f, 0);
         t.flush();
 
         GLFW.glfwSwapBuffers(window);
