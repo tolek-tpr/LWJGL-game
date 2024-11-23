@@ -1,5 +1,7 @@
 package org.bnb.window;
 
+import org.bnb.event.EventManager;
+import org.bnb.event.KeyboardListener;
 import org.lwjgl.glfw.Callbacks;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -30,6 +32,8 @@ public class Window {
         GLFW.glfwSetErrorCallback(null).free();
     }
 
+    public long getHandle() { return this.window; }
+
     private void initGlfwWindow() {
         GLFWErrorCallback.createPrint(System.err).set();
 
@@ -43,9 +47,7 @@ public class Window {
         if (window == MemoryUtil.NULL) throw new RuntimeException("Failed to create GLFW window!");
 
         GLFW.glfwSetKeyCallback(window, (window, key, scanCode, action, mods) -> {
-            if (key == GLFW.GLFW_KEY_ESCAPE && action == GLFW.GLFW_PRESS) {
-                GLFW.glfwSetWindowShouldClose(window, true);
-            }
+            this.handleInput(key, scanCode, mods);
         });
 
         try (MemoryStack stack = MemoryStack.stackPush()) {
@@ -81,8 +83,6 @@ public class Window {
             prev = System.currentTimeMillis();
             steps += elapsed;
 
-            handleInput();
-
             while (steps >= millisPerUpdate){
                 update();
                 steps-=millisPerUpdate;
@@ -94,8 +94,8 @@ public class Window {
     }
 
     //Input Listener Stuff
-    private void handleInput(){
-
+    private void handleInput(int keyCode, int scanCode, int mods){
+        EventManager.getInstance().fire(new KeyboardListener.KeyboardEvent(keyCode, scanCode, mods));
     }
 
     //Update the game state
