@@ -87,9 +87,7 @@ public class Window {
                 update();
                 steps-=millisPerUpdate;
             }
-
             render();
-            sync(System.currentTimeMillis());
         }
     }
 
@@ -109,10 +107,4 @@ public class Window {
         GLFW.glfwSwapBuffers(window);
         GLFW.glfwPollEvents();
     }
-
-    //Sync the Timer
-    private void sync(double loopStartTime){
-
-    }
-
 }

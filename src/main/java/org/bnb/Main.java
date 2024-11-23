@@ -20,6 +20,7 @@ public class Main {
 
         // Client start
         LWGClient client = LWGClient.getInstance();
+        client.getWindow().run();
     }
 
 }

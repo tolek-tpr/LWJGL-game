@@ -15,9 +15,8 @@ public class LWGClient {
     // Actual code
     private final Window gameWindow;
 
-    public LWGClient() {
+    private LWGClient() {
         gameWindow = new Window();
-        gameWindow.run();
     }
 
     public Window getWindow() { return this.gameWindow; }
