@@ -18,6 +18,9 @@ public class Window {
     public static final double FPS = 60.0;
 
     private long window;
+    private double width;
+    private double height;
+
 
     public void run() {
         System.out.println("Starting GLFW window!");
@@ -48,6 +51,10 @@ public class Window {
 
         GLFW.glfwSetKeyCallback(window, (window, key, scanCode, action, mods) -> {
             this.handleInput(key, scanCode, mods);
+        });
+        GLFW.glfwSetFramebufferSizeCallback(window, (window, width, height) -> {
+            Window.this.width = width;
+            Window.this.height = height;
         });
 
         try (MemoryStack stack = MemoryStack.stackPush()) {
