@@ -21,6 +21,4 @@ public class LWGClient {
 
     public Window getWindow() { return this.gameWindow; }
 
-
-
 }
