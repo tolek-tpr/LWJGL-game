@@ -124,7 +124,7 @@ public class Window {
     private void render(){
         GL20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT); // clear the framebuffer
 
-        program.setFloat4("color", 0.0F, 0.7F, 0.5F, 0.0F);
+        program.setFloat4("color", 0.33F, 0.66F, 0.99F, 1.0F);
         program.use();
 
         Tessellator t = new Tessellator();
@@ -134,8 +134,8 @@ public class Window {
         t.setVertex(0.25f, 0, 0);
         t.setColor(1, 1,0);
         t.setVertex(0.5f, 0.5f, 0);
-        t.setColor(1, 0,1);
-        t.setVertex(0, 0.25f, 0);
+        t.setColor(1, 0, 1);
+        t.setVertex(0.75f, 0.25f, 0);
         t.flush();
 
         GLFW.glfwSwapBuffers(window);
