@@ -15,10 +15,11 @@ public class GameRenderer {
 
     private GameRenderer() {
         float aspectRatio = (float) window.getWidth() / (float) window.getHeight();
-        System.out.println(aspectRatio);
         // FIX ME! Projection matrix stopps the box from rendering!
-        projectionMatrix = new Matrix4f().perspective(FOV, aspectRatio,
-                Z_NEAR, Z_FAR);
+        /*projectionMatrix = new Matrix4f().perspective(FOV, aspectRatio,
+                Z_NEAR, Z_FAR);*/
+        projectionMatrix = new Matrix4f();
+        projectionMatrix.perspective(FOV, aspectRatio, Z_NEAR, Z_FAR);
     }
 
     private static final float FOV = (float) Math.toRadians(45.0f);
