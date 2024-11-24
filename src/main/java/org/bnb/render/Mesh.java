@@ -2,9 +2,9 @@ package org.bnb.render;
 
 import org.bnb.utils.LWGUtil;
 import org.bnb.utils.ShaderProgram;
+import org.bnb.utils.SharedConstants;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryUtil;
 
@@ -24,8 +24,6 @@ public class Mesh {
 
         program = new ShaderProgram(LWGUtil.getResourceAsInputStream("game/shaders/DefaultMeshShader.vs"),
                 LWGUtil.getResourceAsInputStream("game/shaders/DefaultMeshShader.fs"));
-        Matrix4f projectionMatrix = GameRenderer.getInstance().getProjectionMatrix();
-        program.setMat4("projectionMatrix", projectionMatrix);
 
         try {
             verticesBuffer = MemoryUtil.memAllocFloat(positions.length);
@@ -75,9 +73,12 @@ public class Mesh {
     public int getVAO() { return this.VAO; }
     public int getVertexCount() { return this.vertexCount; }
 
-    public void render() {
+    public void render(Matrix4f projectionMatrix, Matrix4f worldMatrix) {
         try {
             program.use();
+
+            program.setMat4("projectionMatrix", projectionMatrix);
+            program.setMat4("worldMatrix", worldMatrix);
 
             GL30.glBindVertexArray(this.getVAO());
             GL30.glEnableVertexAttribArray(0);
@@ -90,7 +91,7 @@ public class Mesh {
             GL30.glDisableVertexAttribArray(1);
             GL30.glBindVertexArray(0);
 
-            program.unBind();
+            program.unbind();
         } catch (Exception e) {
             e.printStackTrace();
         }

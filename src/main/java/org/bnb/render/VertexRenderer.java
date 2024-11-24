@@ -3,6 +3,7 @@ package org.bnb.render;
 import org.bnb.LWGClient;
 import org.bnb.utils.LWGUtil;
 import org.bnb.utils.ShaderProgram;
+import org.bnb.utils.SharedConstants;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryUtil;
@@ -81,7 +82,7 @@ public class VertexRenderer {
             GL30.glDisableVertexAttribArray(0);
             GL30.glBindVertexArray(0);
 
-            program.unBind();
+            program.unbind();
         } catch(Exception e) {
             e.printStackTrace();
         }

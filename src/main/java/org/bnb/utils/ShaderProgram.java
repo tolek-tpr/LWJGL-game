@@ -1,11 +1,9 @@
 package org.bnb.utils;
 
-import org.joml.Matrix4d;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.system.MemoryStack;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.FloatBuffer;
@@ -47,7 +45,7 @@ public class ShaderProgram {
     public void use() {
         GL20.glUseProgram(ID);
     }
-    public void unBind() { GL20.glUseProgram(0); }
+    public void unbind() { GL20.glUseProgram(0); }
 
     public void setBoolean(String uniformName, boolean value) {
         GL20.glUniform1i(GL20.glGetUniformLocation(ID, uniformName), value ? 1 : 0);
@@ -73,10 +71,6 @@ public class ShaderProgram {
         try (MemoryStack stack = MemoryStack.stackPush()) {
             FloatBuffer fb = stack.mallocFloat(16);
             matrix.get(fb);
-
-            for (int i = 0; i < fb.limit(); i++) {
-                System.out.print(fb.get(i) + " | ");
-            }
             GL20.glUniformMatrix4fv(GL20.glGetUniformLocation(ID, uniformName), false, fb);
         }
     }

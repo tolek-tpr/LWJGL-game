@@ -2,8 +2,12 @@ package org.bnb.window;
 
 import org.bnb.event.EventManager;
 import org.bnb.event.KeyboardListener;
+import org.bnb.event.WindowListener;
+import org.bnb.render.LWGObject;
 import org.bnb.render.Mesh;
 import org.bnb.render.VertexRenderer;
+import org.bnb.utils.RenderUtils;
+import org.bnb.utils.SharedConstants;
 import org.joml.Matrix4f;
 import org.lwjgl.glfw.Callbacks;
 import org.lwjgl.glfw.GLFW;
@@ -20,13 +24,15 @@ import java.util.ArrayList;
 
 public class Window {
 
-    public static final double FPS = 60.0;
+    public static final double FPS = SharedConstants.DEFAULT_FPS;
 
     private long window;
-    private double width = 700;
-    private double height = 600;
+    private double width = SharedConstants.DEFAULT_WINDOW_WIDTH;
+    private double height = SharedConstants.DEFAULT_WINDOW_HEIGHT;
 
-    private final ArrayList<Mesh> meshes = new ArrayList<>();
+    private final ArrayList<LWGObject> drawableObjects = new ArrayList<>();
+    private final Matrix4f projectionMatrix = RenderUtils.getProjectionMatrix(SharedConstants.DEFAULT_FOV, SharedConstants.DEFAULT_WINDOW_WIDTH, SharedConstants.DEFAULT_WINDOW_HEIGHT,
+            SharedConstants.DEFAULT_Z_NEAR, SharedConstants.DEFAULT_Z_FAR);
 
     public void run() {
         System.out.println("Starting GLFW window!");
@@ -34,7 +40,9 @@ public class Window {
         try {
             initGlfwWindow();
             loop();
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
 
         Callbacks.glfwFreeCallbacks(window);
         GLFW.glfwDestroyWindow(window);
@@ -45,10 +53,7 @@ public class Window {
 
     public long getHandle() { return this.window; }
 
-    private void initGlfwWindow() throws Exception {
-
-        //program.use();
-
+    private void initGlfwWindow() {
         GLFWErrorCallback.createPrint(System.err).set();
 
         if (!GLFW.glfwInit()) throw new IllegalStateException("Unable to initialize GLFW");
@@ -57,16 +62,15 @@ public class Window {
         GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GL20.GL_TRUE);
         GLFW.glfwWindowHint(GLFW.GLFW_VISIBLE, GL20.GL_TRUE);
 
-        window = GLFW.glfwCreateWindow(700, 600, "Hello Window", MemoryUtil.NULL, MemoryUtil.NULL);
+        window = GLFW.glfwCreateWindow(SharedConstants.DEFAULT_WINDOW_WIDTH, SharedConstants.DEFAULT_WINDOW_HEIGHT, "Hello Window", MemoryUtil.NULL, MemoryUtil.NULL);
         if (window == MemoryUtil.NULL) throw new RuntimeException("Failed to create GLFW window!");
 
-        GLFW.glfwSetKeyCallback(window, (window, key, scanCode, action, mods) -> {
-            this.handleInput(key, scanCode, mods);
-        });
+        GLFW.glfwSetKeyCallback(window, (window, key, scanCode, action, mods) -> this.handleInput(key, scanCode, mods));
         GLFW.glfwSetFramebufferSizeCallback(window, (window, width, height) -> {
             Window.this.width = width;
             Window.this.height = height;
             GL30.glViewport(0, 0, width, height);
+            EventManager.getInstance().fire(new WindowListener.WindowResizeEvent(this.getHandle(), width, height));
         });
 
         try (MemoryStack stack = MemoryStack.stackPush()) {
@@ -89,10 +93,10 @@ public class Window {
         GLFW.glfwShowWindow(window);
 
         float[] positions = new float[]{
-                -0.5f,  0.5f, -1.05f,
-                -0.5f, -0.5f, -1.05f,
-                0.5f, -0.5f, -1.05f,
-                0.5f,  0.5f, -1.05f,
+                -0.5f,  0.5f, -5.05f,
+                -0.5f, -0.5f, -5.05f,
+                0.5f, -0.5f, -5.05f,
+                0.5f,  0.5f, -5.05f,
         };
         float[] colors = new float[]{
                 0.5f, 0.0f, 0.0f,
@@ -103,7 +107,11 @@ public class Window {
         int[] indices = new int[]{
                 0, 1, 3, 3, 1, 2,
         };
-        this.addMesh(new Mesh(positions, colors, indices));
+        Mesh m = new Mesh(positions, colors, indices);
+        LWGObject obj = new LWGObject(m);
+        obj.setPosition(0.3F, 0.1F, 0.5F);
+        obj.setRotation(0, 0, 20F);
+        this.addDrawable(obj);
     }
 
     private void loop() {
@@ -155,7 +163,7 @@ public class Window {
         t.flush();*/
 
             VertexRenderer.getInstance().renderFrame();
-            meshes.forEach(Mesh::render);
+            drawableObjects.forEach(object -> object.render(projectionMatrix));
 
             GLFW.glfwSwapBuffers(window);
             GLFW.glfwPollEvents();
@@ -164,12 +172,12 @@ public class Window {
         }
     }
 
-    public ArrayList<Mesh> addMesh(Mesh m) {
-        this.meshes.add(m);
-        return this.meshes;
+    public ArrayList<LWGObject> addDrawable(LWGObject m) {
+        this.drawableObjects.add(m);
+        return this.drawableObjects;
     }
 
-    public ArrayList<Mesh> getMeshes() { return this.meshes; }
+    public ArrayList<LWGObject> getDrawableObjects() { return this.drawableObjects; }
     public double getWidth() { return this.width; }
     public double getHeight() { return this.height; }
 

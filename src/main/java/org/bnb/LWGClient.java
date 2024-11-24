@@ -23,11 +23,11 @@ public class LWGClient {
         this.vertexConsumer = new VertexConsumer();
         gameWindow = new Window();
 
-        vertexConsumer.setRenderType(RenderType.TRIANGLES);
-
-        vertexConsumer.vertex(1f, -1f, 0.0f)  .color(1, 1, 1, 1);
-        vertexConsumer.vertex(-1f, -1f, 0.0f) .color(1, 1, 0, 1);
-        vertexConsumer.vertex(-1f, 1f, 0.0f)  .color(1, 0, 1, 1);
+//        vertexConsumer.setRenderType(RenderType.TRIANGLES);
+//
+//        vertexConsumer.vertex(1f, -1f, 0.0f)  .color(1, 1, 1, 1);
+//        vertexConsumer.vertex(-1f, -1f, 0.0f) .color(1, 1, 0, 1);
+//        vertexConsumer.vertex(-1f, 1f, 0.0f)  .color(1, 0, 1, 1);
     }
 
     public Window getWindow() { return this.gameWindow; }
