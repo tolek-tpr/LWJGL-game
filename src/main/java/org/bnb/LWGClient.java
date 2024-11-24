@@ -1,7 +1,7 @@
 package org.bnb;
 
-import org.bnb.utils.LWGUtil;
-import org.bnb.utils.ShaderProgram;
+import org.bnb.render.RenderType;
+import org.bnb.render.VertexConsumer;
 import org.bnb.window.Window;
 
 public class LWGClient {
@@ -16,15 +16,20 @@ public class LWGClient {
 
     // Actual code
     private final Window gameWindow;
+    private final VertexConsumer vertexConsumer;
 
     private LWGClient() {
+        this.vertexConsumer = new VertexConsumer();
         gameWindow = new Window();
 
-//        ShaderProgram program = new ShaderProgram(LWGUtil.getResourceAsInputStream("game/shaders/ExampleShaderVertex.glsl"),
-//                LWGUtil.getResourceAsInputStream("game/shaders/ExampleShaderFragment.glsl"));
-//        program.use();
+        vertexConsumer.setRenderType(RenderType.TRIANGLES);
+
+        vertexConsumer.vertex(1f, -1f, 0.0f)  .color(1, 1, 1, 1);
+        vertexConsumer.vertex(-1f, -1f, 0.0f) .color(1, 1, 0, 1);
+        vertexConsumer.vertex(-1f, 1f, 0.0f)  .color(1, 0, 1, 1);
     }
 
     public Window getWindow() { return this.gameWindow; }
+    public VertexConsumer getVertexConsumers() { return this.vertexConsumer; }
 
 }

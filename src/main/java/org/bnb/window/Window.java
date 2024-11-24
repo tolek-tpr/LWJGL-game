@@ -2,6 +2,7 @@ package org.bnb.window;
 
 import org.bnb.event.EventManager;
 import org.bnb.event.KeyboardListener;
+import org.bnb.render.Renderer;
 import org.bnb.render.Tessellator;
 import org.bnb.utils.LWGUtil;
 import org.bnb.utils.ShaderProgram;
@@ -11,6 +12,7 @@ import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
@@ -54,7 +56,7 @@ public class Window {
         GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GL20.GL_TRUE);
         GLFW.glfwWindowHint(GLFW.GLFW_VISIBLE, GL20.GL_TRUE);
 
-        window = GLFW.glfwCreateWindow(300, 300, "Hello Window", MemoryUtil.NULL, MemoryUtil.NULL);
+        window = GLFW.glfwCreateWindow(700, 600, "Hello Window", MemoryUtil.NULL, MemoryUtil.NULL);
         if (window == MemoryUtil.NULL) throw new RuntimeException("Failed to create GLFW window!");
 
         GLFW.glfwSetKeyCallback(window, (window, key, scanCode, action, mods) -> {
@@ -63,6 +65,7 @@ public class Window {
         GLFW.glfwSetFramebufferSizeCallback(window, (window, width, height) -> {
             Window.this.width = width;
             Window.this.height = height;
+            GL30.glViewport(0, 0, width, height);
         });
 
         try (MemoryStack stack = MemoryStack.stackPush()) {
@@ -123,11 +126,10 @@ public class Window {
     //Rendering
     private void render(){
         GL20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-
-        program.setFloat4("color", 0.33F, 0.66F, 0.99F, 1.0F);
+        
         program.use();
 
-        Tessellator t = new Tessellator();
+        /*Tessellator t = new Tessellator();
         t.setColor(0, 1,0);
         t.setVertex(0, 0, 0);
         t.setColor(1, 0,0);
@@ -136,7 +138,9 @@ public class Window {
         t.setVertex(0.5f, 0.5f, 0);
         t.setColor(1, 0, 1);
         t.setVertex(0.75f, 0.25f, 0);
-        t.flush();
+        t.flush();*/
+
+        Renderer.getInstance().renderFrame();
 
         GLFW.glfwSwapBuffers(window);
         GLFW.glfwPollEvents();
