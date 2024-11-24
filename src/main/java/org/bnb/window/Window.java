@@ -3,6 +3,8 @@ package org.bnb.window;
 import org.bnb.event.EventManager;
 import org.bnb.event.KeyboardListener;
 import org.bnb.render.Tessellator;
+import org.bnb.utils.LWGUtil;
+import org.bnb.utils.ShaderProgram;
 import org.lwjgl.glfw.Callbacks;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -21,13 +23,15 @@ public class Window {
     private long window;
     private double width;
     private double height;
-
+    private ShaderProgram program;
 
     public void run() {
         System.out.println("Starting GLFW window!");
 
-        initGlfwWindow();
-        loop();
+        try {
+            initGlfwWindow();
+            loop();
+        } catch(Exception e) {}
 
         Callbacks.glfwFreeCallbacks(window);
         GLFW.glfwDestroyWindow(window);
@@ -38,7 +42,10 @@ public class Window {
 
     public long getHandle() { return this.window; }
 
-    private void initGlfwWindow() {
+    private void initGlfwWindow() throws Exception {
+
+        //program.use();
+
         GLFWErrorCallback.createPrint(System.err).set();
 
         if (!GLFW.glfwInit()) throw new IllegalStateException("Unable to initialize GLFW");
@@ -71,9 +78,14 @@ public class Window {
         }
 
         GLFW.glfwMakeContextCurrent(window);
+        GL.createCapabilities();
+
         GLFW.glfwSwapInterval(1);
 
         GLFW.glfwShowWindow(window);
+
+        program = new ShaderProgram(LWGUtil.getResourceAsInputStream("game/shaders/ExampleShaderVertex.glsl"),
+                LWGUtil.getResourceAsInputStream("game/shaders/ExampleShaderFragment.glsl"));
     }
 
     private void loop() {
@@ -81,7 +93,6 @@ public class Window {
         double prev = System.currentTimeMillis();
         double steps = 0.0;
 
-        GL.createCapabilities();
         GL20.glClearColor(0.1f, 0.5f, 0.5f, 1.0f);
 
         //Game Loop
@@ -112,6 +123,9 @@ public class Window {
     //Rendering
     private void render(){
         GL20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+
+        program.setFloat4("color", 0.0F, 0.7F, 0.5F, 0.0F);
+        program.use();
 
         Tessellator t = new Tessellator();
         t.setColor(0, 1,0);

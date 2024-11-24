@@ -61,6 +61,10 @@ public class ShaderProgram {
         GL20.glUniform3f(GL20.glGetUniformLocation(ID, uniformName), f1, f2, f3);
     }
 
+    public void setFloat4(String uniformName, float f1, float f2, float f3, float f4) {
+        GL20.glUniform4f(GL20.glGetUniformLocation(ID, uniformName), f1, f2, f3, f4);
+    }
+
     private void checkErrors(int shader, String type) {
         if (type.equals("PROGRAM")) {
             if (!GL20.glGetProgramInfoLog(shader).isEmpty()) {
