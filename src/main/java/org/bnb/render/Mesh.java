@@ -5,6 +5,7 @@ import org.bnb.utils.ShaderProgram;
 import org.bnb.utils.SharedConstants;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryUtil;
 
@@ -75,6 +76,8 @@ public class Mesh {
 
     public void render(Matrix4f projectionMatrix, Matrix4f worldMatrix) {
         try {
+            GL20.glEnable(GL20.GL_DEPTH_TEST);
+
             program.use();
 
             program.setMat4("projectionMatrix", projectionMatrix);
@@ -92,6 +95,8 @@ public class Mesh {
             GL30.glBindVertexArray(0);
 
             program.unbind();
+
+            GL20.glDisable(GL20.GL_DEPTH_TEST);
         } catch (Exception e) {
             e.printStackTrace();
         }

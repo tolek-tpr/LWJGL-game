@@ -93,23 +93,50 @@ public class Window {
         GLFW.glfwShowWindow(window);
 
         float[] positions = new float[]{
-                -0.5f,  0.5f, -5.05f,
-                -0.5f, -0.5f, -5.05f,
-                0.5f, -0.5f, -5.05f,
-                0.5f,  0.5f, -5.05f,
+                // VO
+                -0.5f,  0.5f,  0.5f,
+                // V1
+                -0.5f, -0.5f,  0.5f,
+                // V2
+                0.5f, -0.5f,  0.5f,
+                // V3
+                0.5f,  0.5f,  0.5f,
+                // V4
+                -0.5f,  0.5f, -0.5f,
+                // V5
+                0.5f,  0.5f, -0.5f,
+                // V6
+                -0.5f, -0.5f, -0.5f,
+                // V7
+                0.5f, -0.5f, -0.5f,
         };
         float[] colors = new float[]{
                 0.5f, 0.0f, 0.0f,
                 0.0f, 0.5f, 0.0f,
                 0.0f, 0.0f, 0.5f,
                 0.0f, 0.5f, 0.5f,
+                0.5f, 0.0f, 0.0f,
+                0.0f, 0.5f, 0.0f,
+                0.0f, 0.0f, 0.5f,
+                0.0f, 0.5f, 0.5f,
         };
         int[] indices = new int[]{
+                // Front face
                 0, 1, 3, 3, 1, 2,
+                // Top Face
+                4, 0, 3, 5, 4, 3,
+                // Right face
+                3, 2, 7, 5, 3, 7,
+                // Left face
+                6, 1, 0, 6, 0, 4,
+                // Bottom face
+                2, 1, 6, 2, 6, 7,
+                // Back face
+                7, 6, 4, 7, 4, 5,
         };
         Mesh m = new Mesh(positions, colors, indices);
         LWGObject obj = new LWGObject(m);
-        obj.setPosition(0.3F, 0.1F, 0.5F);
+        obj.setPosition(0.0F, 0.0F, -5.5F);
         obj.setRotation(0, 0, 20F);
         this.addDrawable(obj);
     }
@@ -151,16 +178,13 @@ public class Window {
         try {
             GL20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT); // clear the framebuffer
 
-        /*Tessellator t = new Tessellator();
-        t.setColor(0, 1,0);
-        t.setVertex(0, 0, 0);
-        t.setColor(1, 0,0);
-        t.setVertex(0.25f, 0, 0);
-        t.setColor(1, 1,0);
-        t.setVertex(0.5f, 0.5f, 0);
-        t.setColor(1, 0, 1);
-        t.setVertex(0.75f, 0.25f, 0);
-        t.flush();*/
+            for (LWGObject object : drawableObjects) {
+                float rotation = object.getRotation().x + 1.5f;
+                if ( rotation > 360 ) {
+                    rotation = 0;
+                }
+                object.setRotation(rotation, rotation, rotation);
+            }
 
             VertexRenderer.getInstance().renderFrame();
             drawableObjects.forEach(object -> object.render(projectionMatrix));
