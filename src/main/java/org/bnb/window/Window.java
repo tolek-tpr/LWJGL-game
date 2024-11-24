@@ -3,9 +3,8 @@ package org.bnb.window;
 import org.bnb.event.EventManager;
 import org.bnb.event.KeyboardListener;
 import org.bnb.render.Mesh;
-import org.bnb.render.Renderer;
-import org.bnb.utils.LWGUtil;
-import org.bnb.utils.ShaderProgram;
+import org.bnb.render.VertexRenderer;
+import org.joml.Matrix4f;
 import org.lwjgl.glfw.Callbacks;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -24,8 +23,8 @@ public class Window {
     public static final double FPS = 60.0;
 
     private long window;
-    private double width;
-    private double height;
+    private double width = 700;
+    private double height = 600;
 
     private final ArrayList<Mesh> meshes = new ArrayList<>();
 
@@ -90,10 +89,10 @@ public class Window {
         GLFW.glfwShowWindow(window);
 
         float[] positions = new float[]{
-                -0.5f,  0.5f, 0.0f,
-                -0.5f, -0.5f, 0.0f,
-                0.5f, -0.5f, 0.0f,
-                0.5f,  0.5f, 0.0f,
+                -0.5f,  0.5f, 0.05f,
+                -0.5f, -0.5f, 0.05f,
+                0.5f, -0.5f, 0.05f,
+                0.5f,  0.5f, 0.05f,
         };
         float[] colors = new float[]{
                 0.5f, 0.0f, 0.0f,
@@ -155,7 +154,7 @@ public class Window {
         t.setVertex(0.75f, 0.25f, 0);
         t.flush();*/
 
-            Renderer.getInstance().renderFrame();
+            VertexRenderer.getInstance().renderFrame();
             meshes.forEach(Mesh::render);
 
             GLFW.glfwSwapBuffers(window);
@@ -171,5 +170,7 @@ public class Window {
     }
 
     public ArrayList<Mesh> getMeshes() { return this.meshes; }
+    public double getWidth() { return this.width; }
+    public double getHeight() { return this.height; }
 
 }

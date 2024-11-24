@@ -1,11 +1,14 @@
 package org.bnb.utils;
 
 import org.joml.Matrix4d;
+import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL20;
+import org.lwjgl.system.MemoryStack;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.FloatBuffer;
 
 public class ShaderProgram {
 
@@ -64,6 +67,18 @@ public class ShaderProgram {
 
     public void setFloat4(String uniformName, float f1, float f2, float f3, float f4) {
         GL20.glUniform4f(GL20.glGetUniformLocation(ID, uniformName), f1, f2, f3, f4);
+    }
+
+    public void setMat4(String uniformName, Matrix4f matrix) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            FloatBuffer fb = stack.mallocFloat(16);
+            matrix.get(fb);
+
+            for (int i = 0; i < fb.limit(); i++) {
+                System.out.print(fb.get(i) + " | ");
+            }
+            GL20.glUniformMatrix4fv(GL20.glGetUniformLocation(ID, uniformName), false, fb);
+        }
     }
 
     private void checkErrors(int shader, String type) {

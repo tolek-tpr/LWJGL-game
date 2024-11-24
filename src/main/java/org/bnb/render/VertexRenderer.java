@@ -9,11 +9,11 @@ import org.lwjgl.system.MemoryUtil;
 
 import java.nio.FloatBuffer;
 
-public class Renderer {
+public class VertexRenderer {
 
-    private static Renderer instance;
+    private static VertexRenderer instance;
 
-    private Renderer() {
+    private VertexRenderer() {
         float[] colors = LWGUtil.flattenFloatArray(consumer.getColors());
 
         VAO = GL30.glGenVertexArrays();
@@ -56,8 +56,8 @@ public class Renderer {
                 LWGUtil.getResourceAsInputStream("game/shaders/DefaultConsumerShader.fs"));
     }
 
-    public static Renderer getInstance() {
-        if (instance == null) instance = new Renderer();
+    public static VertexRenderer getInstance() {
+        if (instance == null) instance = new VertexRenderer();
         return instance;
     }
 

@@ -2,6 +2,7 @@ package org.bnb.render;
 
 import org.bnb.utils.LWGUtil;
 import org.bnb.utils.ShaderProgram;
+import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL30;
@@ -23,6 +24,8 @@ public class Mesh {
 
         program = new ShaderProgram(LWGUtil.getResourceAsInputStream("game/shaders/DefaultMeshShader.vs"),
                 LWGUtil.getResourceAsInputStream("game/shaders/DefaultMeshShader.fs"));
+        Matrix4f projectionMatrix = GameRenderer.getInstance().getProjectionMatrix();
+        program.setMat4("projectionMatrix", projectionMatrix);
 
         try {
             verticesBuffer = MemoryUtil.memAllocFloat(positions.length);
