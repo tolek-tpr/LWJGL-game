@@ -44,6 +44,7 @@ public class ShaderProgram {
     public void use() {
         GL20.glUseProgram(ID);
     }
+    public void unBind() { GL20.glUseProgram(0); }
 
     public void setBoolean(String uniformName, boolean value) {
         GL20.glUniform1i(GL20.glGetUniformLocation(ID, uniformName), value ? 1 : 0);

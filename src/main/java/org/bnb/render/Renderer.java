@@ -2,6 +2,7 @@ package org.bnb.render;
 
 import org.bnb.LWGClient;
 import org.bnb.utils.LWGUtil;
+import org.bnb.utils.ShaderProgram;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryUtil;
@@ -50,6 +51,9 @@ public class Renderer {
         GL30.glBindBuffer(GL30.GL_ARRAY_BUFFER, 0);
 
         GL30.glBindVertexArray(0);
+
+        program = new ShaderProgram(LWGUtil.getResourceAsInputStream("game/shaders/DefaultConsumerShader.vs"),
+                LWGUtil.getResourceAsInputStream("game/shaders/DefaultConsumerShader.fs"));
     }
 
     public static Renderer getInstance() {
@@ -63,14 +67,24 @@ public class Renderer {
 
     private final float[] vertices = LWGUtil.flattenFloatArray(consumer.getVertices());
 
+    private final ShaderProgram program;
+
     public void renderFrame() {
-        GL30.glBindVertexArray(VAO);
-        GL30.glEnableVertexAttribArray(0);
+        try {
+            program.use();
 
-        GL30.glDrawArrays(RenderType.getGlFunc(consumer.getRenderType()), 0, vertices.length);
+            GL30.glBindVertexArray(VAO);
+            GL30.glEnableVertexAttribArray(0);
 
-        GL30.glDisableVertexAttribArray(0);
-        GL30.glBindVertexArray(0);
+            GL30.glDrawArrays(RenderType.getGlFunc(consumer.getRenderType()), 0, vertices.length);
+
+            GL30.glDisableVertexAttribArray(0);
+            GL30.glBindVertexArray(0);
+
+            program.unBind();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

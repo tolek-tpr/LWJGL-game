@@ -2,8 +2,8 @@ package org.bnb.window;
 
 import org.bnb.event.EventManager;
 import org.bnb.event.KeyboardListener;
+import org.bnb.render.Mesh;
 import org.bnb.render.Renderer;
-import org.bnb.render.Tessellator;
 import org.bnb.utils.LWGUtil;
 import org.bnb.utils.ShaderProgram;
 import org.lwjgl.glfw.Callbacks;
@@ -17,6 +17,7 @@ import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
 import java.nio.IntBuffer;
+import java.util.ArrayList;
 
 public class Window {
 
@@ -25,7 +26,8 @@ public class Window {
     private long window;
     private double width;
     private double height;
-    private ShaderProgram program;
+
+    private final ArrayList<Mesh> meshes = new ArrayList<>();
 
     public void run() {
         System.out.println("Starting GLFW window!");
@@ -87,8 +89,22 @@ public class Window {
 
         GLFW.glfwShowWindow(window);
 
-        program = new ShaderProgram(LWGUtil.getResourceAsInputStream("game/shaders/ExampleShaderVertex.glsl"),
-                LWGUtil.getResourceAsInputStream("game/shaders/ExampleShaderFragment.glsl"));
+        float[] positions = new float[]{
+                -0.5f,  0.5f, 0.0f,
+                -0.5f, -0.5f, 0.0f,
+                0.5f, -0.5f, 0.0f,
+                0.5f,  0.5f, 0.0f,
+        };
+        float[] colors = new float[]{
+                0.5f, 0.0f, 0.0f,
+                0.0f, 0.5f, 0.0f,
+                0.0f, 0.0f, 0.5f,
+                0.0f, 0.5f, 0.5f,
+        };
+        int[] indices = new int[]{
+                0, 1, 3, 3, 1, 2,
+        };
+        this.addMesh(new Mesh(positions, colors, indices));
     }
 
     private void loop() {
@@ -125,9 +141,8 @@ public class Window {
 
     //Rendering
     private void render(){
-        GL20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-        
-        program.use();
+        try {
+            GL20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT); // clear the framebuffer
 
         /*Tessellator t = new Tessellator();
         t.setColor(0, 1,0);
@@ -140,9 +155,21 @@ public class Window {
         t.setVertex(0.75f, 0.25f, 0);
         t.flush();*/
 
-        Renderer.getInstance().renderFrame();
+            Renderer.getInstance().renderFrame();
+            meshes.forEach(Mesh::render);
 
-        GLFW.glfwSwapBuffers(window);
-        GLFW.glfwPollEvents();
+            GLFW.glfwSwapBuffers(window);
+            GLFW.glfwPollEvents();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    public ArrayList<Mesh> addMesh(Mesh m) {
+        this.meshes.add(m);
+        return this.meshes;
+    }
+
+    public ArrayList<Mesh> getMeshes() { return this.meshes; }
+
 }

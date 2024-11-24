@@ -8,7 +8,7 @@ public class VertexConsumer {
     float[][] colors = {};
     float[][] textureMappings = {};
 
-    private RenderType renderType;
+    private RenderType renderType = RenderType.TRIANGLES;
 
     public VertexConsumer vertex(float x, float y, float z) {
         vertices = LWGUtil.addFloatEntry(vertices, new float[]{ x, y, z });

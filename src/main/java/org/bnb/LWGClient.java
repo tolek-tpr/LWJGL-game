@@ -1,5 +1,6 @@
 package org.bnb;
 
+import org.bnb.render.Mesh;
 import org.bnb.render.RenderType;
 import org.bnb.render.VertexConsumer;
 import org.bnb.window.Window;
