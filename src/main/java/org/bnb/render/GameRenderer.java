@@ -22,8 +22,8 @@ public class GameRenderer {
     }
 
     private static final float FOV = (float) Math.toRadians(45.0f);
-    private static final float Z_NEAR = 0.1f;
-    private static final float Z_FAR = 100.0f;
+    private static final float Z_NEAR = 0.05f;
+    private static final float Z_FAR = 1000.0f;
     private Matrix4f projectionMatrix;
     private final LWGClient client = LWGClient.getInstance();
     private final Window window = client.getWindow();
